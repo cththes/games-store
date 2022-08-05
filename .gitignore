@@ -1,3 +1,8 @@
+/.end
+/node_modules
+/.idea
+/.next
+
 ############################
 # OS X
 ############################
@@ -113,3 +118,4 @@ exports
 build
 .strapi-updater.json
 .next
+
