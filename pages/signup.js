@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import axios from 'axios';
 import Input from '../components/Input';
+import { authAPI } from '../api/api';
 
 const Signup = () => {
    const [email, setEmail] = useState("")
@@ -7,13 +9,7 @@ const Signup = () => {
    const [username, setUsername] = useState("")
 
    const onSignupButtonClick = () => {
-      axios
-         .post(`
-      http://localhost:1337/api/auth/local/register`, {
-            username: username,
-            email: email,
-            password: password
-         })
+      authAPI.signup(username, email, password)
          .then((response) => {
             console.log('response', response)
          });

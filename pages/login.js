@@ -1,20 +1,20 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import { authAPI } from '../api/api';
 import Input from '../components/Input';
+import auth from "../store/auth";
 
 const Login = () => {
    const [email, setEmail] = useState("")
    const [password, setPassword] = useState("")
 
    const onLoginButtonClick = () => {
-      axios
-         .post(`
-      http://localhost:1337/api/auth/local`, {
-            identifier: email,
-            password: password
-         })
+      authAPI.login(email, password)
          .then((response) => {
-            console.log('response', response)
+            if (response.status === 200) {
+               auth.login()
+            }
+            console.log('auth.isAuth', auth.isAuth)
          });
    }
 

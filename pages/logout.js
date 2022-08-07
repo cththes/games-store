@@ -1,28 +1,23 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import Input from '../components/Input';
+import { authAPI } from '../api/api';
+import auth from "../store/auth";
+import { useHistory } from "react-router-dom";
+
+//let history = useHistory();
+
+/*const logout = () => {
+   localStorage.removeItem('jwt');
+   localStorage.removeItem('username');
+   history.push("/sigin");
+   auth.logout()
+   console.log('auth.isAuth', auth.isAuth)
+}*/
 
 const Logout = () => {
-   const [email, setEmail] = useState("")
-   const [password, setPassword] = useState("")
-   const [username, setUsername] = useState("")
-
-   const onLogoutButtonClick = () => {
-      axios
-         .post(`
-      http://localhost:1337/api/auth/local`, {
-            identifier: email,
-            password: password
-         })
-         .then((response) => {
-            console.log('response', response)
-         });
-   }
-
-
    return (
       <div className='logout'>
-         <button className="logout__btn" onClick={onLogoutButtonClick}>Выйти</button>
+         <button className="logout__btn" onClick={() => alert('logout')}>Выйти</button>
       </div>
    );
 }
