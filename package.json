@@ -27,13 +27,15 @@
   },
   "homepage": "https://github.com/cththes/Games-Store-Front-End#readme",
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "antd": "^4.22.3",
     "axios": "^0.27.2",
     "mobx": "^6.6.1",
     "mobx-react-lite": "^3.4.0",
     "next": "^12.2.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sass": "^1.54.3"
   },
   "devDependencies": {
     "cypress": "^10.3.1"
