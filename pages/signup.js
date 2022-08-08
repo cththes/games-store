@@ -1,7 +1,15 @@
 import React, { useState } from 'react'
-import axios from 'axios';
 import Input from '../components/Input';
 import { authAPI } from '../api/api';
+import Router from "next/router";
+
+export const SignupButton = () => {
+   return (
+      <button onClick={() => {
+         Router.push("/signup");
+      }}>Зарегистрироваться</button>
+   )
+}
 
 const Signup = () => {
    const [email, setEmail] = useState("")
@@ -11,7 +19,6 @@ const Signup = () => {
    const onSignupButtonClick = () => {
       authAPI.signup(username, email, password)
          .then((response) => {
-            console.log('response', response)
          });
    }
 

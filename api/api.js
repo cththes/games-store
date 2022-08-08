@@ -11,7 +11,4 @@ export const authAPI = {
    login(identifier, password) {
       return instance.post(`/api/auth/local`, { identifier, password });
    },
-   logout(identifier, password) {
-      return instance.post(`/api/auth/local`, { identifier, password });
-   },
 };

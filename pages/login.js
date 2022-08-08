@@ -3,10 +3,20 @@ import React, { useState } from 'react'
 import { authAPI } from '../api/api';
 import Input from '../components/Input';
 import auth from "../store/auth";
+import Router from "next/router";
+
+export const LoginButton = () => {
+   return (
+      <button onClick={() => {
+         Router.push("/login");
+      }}>Войти</button>
+   )
+}
 
 const Login = () => {
    const [email, setEmail] = useState("")
    const [password, setPassword] = useState("")
+
 
    const onLoginButtonClick = () => {
       authAPI.login(email, password)
@@ -14,9 +24,13 @@ const Login = () => {
             if (response.status === 200) {
                auth.login()
             }
-            console.log('auth.isAuth', auth.isAuth)
+            const { pathname } = Router;
+            if (auth.isAuth && pathname === "/login") {
+               Router.push("/");
+            }
          });
    }
+
 
 
    return (
