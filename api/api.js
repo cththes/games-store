@@ -1,5 +1,7 @@
 import * as axios from "axios";
-import { getJwt } from "./utils";
+import Router from "next/router";
+import { deleteJwt, saveJwt, getJwt } from "./utils";
+import auth from '../store/auth.js'
 
 const instance = axios.create({
    baseURL: `http://localhost:1337/api/`,
@@ -7,11 +9,26 @@ const instance = axios.create({
 
 export const authAPI = {
    signup(username, email, password) {
-      return instance.post(`auth/local/register`, { username, email, password })
+      return instance.post(`auth/local/register`, { username, email, password }).then((response) => {
+         const jwt = response.data.jwt;
+         saveJwt(jwt)
+         auth.login()
+         return response;
+      });
    },
    login(identifier, password) {
-      return instance.post(`auth/local`, { identifier, password });
+      return instance.post(`auth/local`, { identifier, password }).then((response) => {
+         const jwt = response.data.jwt;
+         saveJwt(jwt)
+         auth.login()
+         return response;
+      });
    },
+   logout() {
+      deleteJwt()
+      auth.logout()
+      Router.push("/login");
+   }
 };
 
 export const picturesAPI = {
