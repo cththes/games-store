@@ -1,5 +1,6 @@
 import Router from "next/router";
 import { useEffect } from "react";
+import Pictures from "../components/pictures";
 import auth from "../store/auth";
 
 const Main = () => {
@@ -16,6 +17,7 @@ const Main = () => {
          <h1>
             Главная страница
          </h1>
+         <Pictures />
       </div>
    )
 }

@@ -12,8 +12,11 @@ const MainContainer = ({ children, keywords }) => {
          <div className="navbar">
             <A href={"/"} text="Главная" />
             <A href={"/signup"} text="Регистрация" />
+
          </div>
-         <div>{children}</div>
+         <div>{children}
+         </div>
+
       </>
    );
 };
