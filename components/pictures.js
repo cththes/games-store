@@ -4,6 +4,11 @@ import auth from "../store/auth";
 
 const Pictures = () => {
    const [imgs, setImgs] = useState([])
+   const onUploadPhoto = (e) => {
+      if (e.target.files.length) {
+         picturesAPI.saveIMG(e.target.files[0]);
+      }
+   };
    useEffect(() => {
       if (auth.isAuth) {
          picturesAPI.getIMG().then((response) => {
@@ -14,7 +19,9 @@ const Pictures = () => {
    if (!auth.isAuth) return null
    return (
       <div>
-         <button>Загрузить</button>
+         <label>
+            <input type={"file"} text="Загрузить" onChange={onUploadPhoto} />
+         </label>
          <div>
             {imgs.map(image => (
                <div key={image.id}>

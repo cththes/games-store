@@ -34,9 +34,17 @@ export const authAPI = {
 export const picturesAPI = {
    getIMG() {
       const jwt = getJwt()
-      console.log('jwt', jwt)
       return instance.get(`my-pictures?populate[0]=Content`, {
          headers: { Authorization: `Bearer ${jwt}` },
       })
-   }
+   },
+   saveIMG(photoFile) {
+      const formData = new FormData();
+      console.log('photoFile', photoFile)
+      formData.append('files', photoFile);
+      const jwt = getJwt()
+      return instance.post(`upload`, formData, {
+         headers: { Authorization: `Bearer ${jwt}`, 'Content-Type': 'multipart/form-data' }
+      });
+   },
 }
