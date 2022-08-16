@@ -40,7 +40,6 @@ export const picturesAPI = {
    },
    saveIMG(photoFile) {
       const formData = new FormData();
-      console.log('photoFile', photoFile)
       formData.append('files', photoFile);
       const jwt = getJwt()
       return instance.post(`upload`, formData, {

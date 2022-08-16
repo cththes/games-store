@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { authAPI } from '../api/api';
-import Input from '../components/Input';
+import RegistrationForm from '../components/RegistrationForm';
 import auth from "../store/auth";
 import Router from "next/router";
 
@@ -31,14 +31,10 @@ const Login = () => {
          });
    }
 
-
-
    return (
       <div className='signup'>
          <div className="signup__header">Авторизация</div>
-         <Input value={email} setValue={setEmail} type="text" placeholder="Введите email..." />
-         <Input value={password} setValue={setPassword} type="password" placeholder="Введите пароль..." />
-         <button className="signup__btn" onClick={onLoginButtonClick}>Войти</button>
+         {/*<button className="signup__btn" onClick={onLoginButtonClick}>Войти</button>*/}
       </div>
    );
 }

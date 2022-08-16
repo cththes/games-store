@@ -1,11 +1,17 @@
 export const saveJwt = (jwt) => {
-   localStorage.setItem('jwt', jwt)
+   if (localStorage) {
+      localStorage.setItem('jwt', jwt)
+   }
 }
 
 export const deleteJwt = () => {
-   localStorage.removeItem('jwt')
+   if (localStorage) {
+      localStorage.removeItem('jwt')
+   }
 }
 
 export const getJwt = () => {
-   return localStorage.getItem('jwt')
+   if (localStorage) {
+      return localStorage.getItem('jwt')
+   } else return false
 }
