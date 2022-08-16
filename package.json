@@ -1,0 +1,45 @@
+{
+  "name": "front-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:cypress": "cypress open",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p $PORT"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:cypress/recommended"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cththes/Games-Store-Front-End.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cththes/Games-Store-Front-End/issues"
+  },
+  "homepage": "https://github.com/cththes/Games-Store-Front-End#readme",
+  "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "antd": "^4.22.3",
+    "apollo-client": "^2.6.10",
+    "axios": "^0.27.2",
+    "graphql": "^16.5.0",
+    "mobx": "^6.6.1",
+    "mobx-react-lite": "^3.4.0",
+    "next": "^12.2.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.54.3"
+  },
+  "devDependencies": {
+    "cypress": "^10.3.1"
+  }
+}
