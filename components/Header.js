@@ -14,7 +14,6 @@ const Header = () => {
          {auth.isAuth && <Logout />}
          {(!auth.isAuth && Router.pathname === "/login") && <SignupButton />}
          {(!auth.isAuth && Router.pathname !== "/login") && <LoginButton />}
-         {console.log('auth.isAuth', auth.isAuth)}
       </div>
    )
 }

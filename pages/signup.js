@@ -6,7 +6,6 @@ import Router from "next/router";
 const Signup = () => {
    const onSubmit = (values) => {
       const {username, email, password} = values
-      console.log('username, email, password',username, email, password)
       authAPI.signup(username, email, password)
          .then((response) => {
             Router.push("/signup");

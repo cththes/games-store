@@ -4,6 +4,9 @@ import { authAPI } from '../api/api';
 import RegistrationForm from '../components/RegistrationForm';
 import auth from "../store/auth";
 import Router from "next/router";
+import {useQuery} from '@apollo/client'
+
+import {ALL_TODO} from '../apollo/Apollo.js'
 
 export const LoginButton = () => {
    return (
@@ -13,10 +16,20 @@ export const LoginButton = () => {
    )
 }
 
+const makeRequest = (query) => {
+   return fetch(url, {
+      method: "POST",
+      headers: {
+         "Content-type":"application/json"
+      },
+      body: JSON.stringify({query})
+   }).then(res => res.json())
+}
+
 const Login = () => {
    const [email, setEmail] = useState("")
    const [password, setPassword] = useState("")
-
+   const {loading, error, data} = useQuery(ALL_TODO)
 
    const onLoginButtonClick = () => {
       authAPI.login(email, password)
