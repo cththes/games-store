@@ -1,4 +1,3 @@
-import React from 'react'
 import Logout from '../pages/logout';
 import styles from "../styles/Header.module.scss";
 import auth from "../store/auth";
