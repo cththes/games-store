@@ -17,8 +17,9 @@ const Signup = () => {
       const {username, email, password} = values
       authAPI.signup(username, email, password)
          .then((response) => {
-            Router.push("/signup");
+            Router.push("/");
          });
+         
    }
 
    return (
