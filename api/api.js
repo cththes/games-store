@@ -8,22 +8,6 @@ const instance = axios.create({
 });
 
 export const authAPI = {
-   signup(username, email, password) {
-      return instance.post(`auth/local/register`, { username, email, password }).then((response) => {
-         const jwt = response.data.jwt;
-         saveJwt(jwt)
-         auth.login()
-         return response;
-      });
-   },
-   login(identifier, password) {
-      return instance.post(`auth/local`, { identifier, password }).then((response) => {
-         const jwt = response.data.jwt;
-         saveJwt(jwt)
-         auth.login()
-         return response;
-      });
-   },
    logout() {
       deleteJwt()
       auth.logout()

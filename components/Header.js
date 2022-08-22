@@ -1,19 +1,21 @@
-import Logout from '../pages/logout';
+import Logout from '../components/logout';
 import styles from "../styles/Header.module.scss";
 import auth from "../store/auth";
 import { LoginButton } from '../pages/login';
 import { SignupButton } from '../pages/signup';
 import { useRouter } from 'next/router'
+import NoSSR from './NoSSR';
 
 
 const Header = () => {
    const Router = useRouter()
    return (
       <div className={styles.header}>
-         {auth.isAuth && <Logout />}
-         {(!auth.isAuth && Router.pathname === "/login") && <SignupButton />}
-         {(!auth.isAuth && Router.pathname !== "/login") && <LoginButton />}
-         {console.log('auth.isAuth', auth.isAuth)}
+         <NoSSR>
+            {auth.isAuth && <Logout />}
+            {(!auth.isAuth && Router.pathname === "/login") && <SignupButton />}
+            {(!auth.isAuth && Router.pathname !== "/login") && <LoginButton />}
+         </NoSSR>
       </div>
    )
 }

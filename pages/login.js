@@ -1,5 +1,4 @@
 import LoginForm from '../components/LoginForm';
-import { authAPI } from '../api/api';
 import auth from "../store/auth";
 import Router from "next/router";
 import { Button } from 'antd';
@@ -36,16 +35,6 @@ const Login = () => {
 
    const onSubmit = (values) => {
       const { email, password } = values
-      /*authAPI.login(email, password)
-         .then((response) => {
-            if (response.status === 200) {
-               auth.login()
-            }
-            const { pathname } = Router;
-            if (auth.isAuth && pathname === "/login") {
-               Router.push("/");
-            }
-         });*/
       loginGql({
          variables: {
             input: {
@@ -55,13 +44,11 @@ const Login = () => {
             }
          }
       }).then((response) => {
-         console.log("response",response)
          if (response.data.login.jwt) {
             saveJwt(response.data.login.jwt)
             auth.login()
          }
          const { pathname } = Router;
-         console.log(".then auth.isAuth", auth.isAuth)
          if (auth.isAuth && pathname === "/login") {
             Router.push("/");
          }
