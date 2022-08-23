@@ -1,6 +1,6 @@
 import { useEffect} from "react";
 import auth from "../store/auth";
-import { useQuery, useMutation, gql } from "@apollo/client";
+import { useQuery, gql } from "@apollo/client";
 import Router from "next/router";
 import {API_URL} from "../constants/common"
 
