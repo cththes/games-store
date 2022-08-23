@@ -9,7 +9,6 @@ class auth {
       if (typeof window !== "undefined") {
          this.isAuth = !!getJwt()
       }
-      console.log('this.isAuth',this.isAuth)
    }
 
    login() {

@@ -1,40 +1,61 @@
-import { useEffect, useState } from "react"
-import { picturesAPI } from "../api/api"
+import { useEffect} from "react";
 import auth from "../store/auth";
+import { useQuery, useMutation, gql } from "@apollo/client";
+import Router from "next/router";
+import {API_URL} from "../constants/common"
+
+const GET_IMG_QUERY = gql`
+  query getPictures {
+    myPictures {
+      data {
+         id
+         attributes {
+            Description,
+            Content{
+               data{
+                  attributes{
+                     name
+                     url
+                  }
+               }
+            }
+         }
+      }
+    }
+  }
+`;
+
+
 
 const Pictures = () => {
-   const [imgs, setImgs] = useState([])
-   const onUploadPhoto = (e) => {
-      if (e.target.files.length) {
-         picturesAPI.saveIMG(e.target.files[0]);
-      }
-   };
-   useEffect(() => {
-      if (auth.isAuth) {
-         picturesAPI.getIMG().then((response) => {
-            setImgs(response.data.data)
-         })
-      }
-   }, [])
-   if (!auth.isAuth) return null
-   return (
-      <div>
-         <label>
-            <input type={"file"} text="Загрузить" onChange={onUploadPhoto} />
-         </label>
-         <div>
-            {imgs.map(image => (
-               <div key={image.id}>
-                  <div>
-                     {image.attributes.Description}
-                  </div>
-                  <div>
-                     <img src={`http://localhost:1337${image.attributes.Content.data[0].attributes.url}`} alt={image.attributes.Description} />
-                  </div>
-               </div>))}
-         </div>
-      </div>
-   )
-}
+  const { data, loading, error } = useQuery(GET_IMG_QUERY)
+  const imgs = data ? data.myPictures.data : []
 
-export default Pictures
+  useEffect(() => {
+   const { pathname } = Router;
+   if (!auth.isAuth && pathname === "/") {
+      Router.push("/signup");
+   }
+   },[]);
+
+  if (!auth.isAuth) return null;
+  return (
+    <div>
+      <div>
+        {imgs.map((image) => (
+          <div key={image.id}>
+            <div>{image.attributes.Description}</div>
+            <div>
+              <img
+                src={API_URL + image.attributes.Content.data[0].attributes.url}
+                alt={image.attributes.Description}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Pictures;

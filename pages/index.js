@@ -1,10 +1,18 @@
-import Main from "./main"
+import Pictures from "../components/pictures";
+import NoSSR from "../components/NoSSR"
+import Upload from "../components/Upload";
 
 const index = () => {
 
    return (
       <div>
-         <Main />
+         <h1>
+            Главная страница
+         </h1>
+         <NoSSR>
+            <Upload />
+            <Pictures />
+         </NoSSR>  
       </div>
    )
 }
