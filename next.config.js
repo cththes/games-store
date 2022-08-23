@@ -1,3 +1,5 @@
+require('graphql-tag/loader')
+
 module.exports = {
    reactStrictMode: true,
    redirects: async () => {
@@ -8,5 +10,13 @@ module.exports = {
             permanent: true,
          }
       ]
-   }
+   },
+   webpack: (config, options) => {
+      config.module.rules.push({
+         test: /\.(graphql|gql)$/,
+         exclude: /node_modules/,
+         loader: 'graphql-tag/loader'
+      })
+      return config
+   } 
 }

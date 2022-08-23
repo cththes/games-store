@@ -1,34 +1,13 @@
 import { useEffect} from "react";
 import auth from "../store/auth";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery} from "@apollo/client";
 import Router from "next/router";
 import {API_URL} from "../constants/common"
-
-const GET_IMG_QUERY = gql`
-  query getPictures {
-    myPictures {
-      data {
-         id
-         attributes {
-            Description,
-            Content{
-               data{
-                  attributes{
-                     name
-                     url
-                  }
-               }
-            }
-         }
-      }
-    }
-  }
-`;
-
-
+import {getPictures} from '../graphql/queries/getPictures.query.graphql';
 
 const Pictures = () => {
-  const { data, loading, error } = useQuery(GET_IMG_QUERY)
+  const { data, loading, error } = useQuery(getPictures)
+  console.log('getPictures',getPictures)
   const imgs = data ? data.myPictures.data : []
 
   useEffect(() => {

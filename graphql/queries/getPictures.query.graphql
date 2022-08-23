@@ -1,0 +1,18 @@
+query getPictures {
+   myPictures {
+      data {
+         id
+         attributes {
+            Description,
+            Content{
+               data{
+                  attributes{
+                     name
+                     url
+                  }
+               }
+            }
+         }
+      }
+   }
+}
