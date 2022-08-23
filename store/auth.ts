@@ -1,7 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { getJwt } from "../api/utils";
 class auth {
-
    isAuth = false
 
    constructor() {

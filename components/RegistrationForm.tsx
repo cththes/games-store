@@ -2,7 +2,11 @@ import 'antd/dist/antd.css';
 import { Button, Form, Input } from 'antd';
 
 
-const RegistrationForm = ({onSubmit}) => {
+type PropsType = {
+  onSubmit:Function
+}
+
+const RegistrationForm = ({onSubmit}):React.FC<PropsType> => {
 
   const onFinish = (values) => {
     console.log('Success:', values);
