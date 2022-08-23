@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { Button } from 'antd';
 import { authAPI } from '../api/api';
 

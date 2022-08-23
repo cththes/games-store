@@ -43,7 +43,6 @@ const Signup = () => {
             }
          }
       }).then((response) => {
-         console.log('response',response)
          if (response.data.register.jwt) {
             saveJwt(response.data.register.jwt)
             auth.login()

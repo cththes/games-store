@@ -20,18 +20,16 @@ const Upload = () => {
    const [uploadImg, { data: uploadData}] =
    useMutation(UPLOAD_IMG_MUTATION);
 
-   console.log('uploadData',uploadData)
-
    const onUploadPhoto = (e) => {
-     if (e.target.files.length) {
+     if (e.target.files.length) try {
        uploadImg({
          variables: {
            file: e.target.files[0],
          },
-       }).then(({ response }) => {
-          console.log("response", response);
-        })
-     }
+       })
+     } catch(err) {
+      console.log(err.name)
+    }
    }
   return (
     <div>

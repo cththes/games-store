@@ -2,6 +2,7 @@ import { useEffect} from "react";
 import auth from "../store/auth";
 import { useQuery, useMutation, gql } from "@apollo/client";
 import Router from "next/router";
+import {API_URL} from "../constants/common"
 
 const GET_IMG_QUERY = gql`
   query getPictures {
@@ -30,22 +31,6 @@ const Pictures = () => {
   const { data, loading, error } = useQuery(GET_IMG_QUERY)
   const imgs = data ? data.myPictures.data : []
 
-       ///////////////////////////////////////////////////////////////////
-      /*mutate({
-        mutation: UPLOAD_IMG_MUTATION,
-        variables: {
-          file: e.target.files[0],
-        },
-      }).then(({ response }) => {
-        console.log("response", response);
-      });*/
-
-      /*const { data, loading, error } = useQuery(UPLOAD_IMG_QUERY, {
-         variables: formData,
-         pollInterval: 500,
-       })*/
-       /////////////////////////////////////////////////////////////////////
-
   useEffect(() => {
    const { pathname } = Router;
    if (!auth.isAuth && pathname === "/") {
@@ -62,7 +47,7 @@ const Pictures = () => {
             <div>{image.attributes.Description}</div>
             <div>
               <img
-                src={`http://localhost:1337${image.attributes.Content.data[0].attributes.url}`}
+                src={API_URL + image.attributes.Content.data[0].attributes.url}
                 alt={image.attributes.Description}
               />
             </div>

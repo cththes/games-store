@@ -11,7 +11,7 @@ const index = () => {
          </h1>
          <NoSSR>
             <Upload />
-            {/*<Pictures />*/}
+            <Pictures />
          </NoSSR>  
       </div>
    )
