@@ -1,5 +1,5 @@
 mutation login($input: UsersPermissionsLoginInput!){
-      login(input: $input) {
+   login(input: $input) {
       jwt
       user {
          id
@@ -8,5 +8,5 @@ mutation login($input: UsersPermissionsLoginInput!){
          confirmed
          blocked
       }
-      }
    }
+}
