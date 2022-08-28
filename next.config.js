@@ -1,4 +1,4 @@
-//@type {import('next').NextConfig}
+require('graphql-tag/loader')
 
 module.exports = {
    reactStrictMode: true,
@@ -11,11 +11,12 @@ module.exports = {
          }
       ]
    },
-   typescript: {
-      // !! WARN !!
-      // Dangerously allow production builds to successfully complete even if
-      // your project has type errors.
-      // !! WARN !!
-      ignoreBuildErrors: true,
-    },
+   webpack: (config, options) => {
+      config.module.rules.push({
+         test: /\.(graphql|gql)$/,
+         exclude: /node_modules/,
+         loader: 'graphql-tag/loader'
+      })
+      return config
+   } 
 }

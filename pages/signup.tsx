@@ -4,21 +4,7 @@ import Router from "next/router";
 import { Button } from 'antd';
 import { useMutation, gql } from '@apollo/client';
 import {saveJwt} from "../api/utils";
-
-const SIGNUP_MUTATION = gql`
-   mutation register($input: UsersPermissionsRegisterInput!){
-      register(input: $input) {
-         jwt
-         user {
-            id
-            username
-            email
-            confirmed
-            blocked
-         }
-      }
-   }
-`;
+import {register} from '../graphql/mutations/register.mutation.graphql';
 
 export const SignupButton = () => {
    const onSignupButtonClick = () =>{
@@ -30,7 +16,7 @@ export const SignupButton = () => {
 }
 
 const Signup = () => {
-   const [signupGql, { data, loading, error }] = useMutation(SIGNUP_MUTATION);
+   const [signupGql, { data, loading, error }] = useMutation(register);
 
    const onSubmit = (values) => {
       const {username, email, password} = values
