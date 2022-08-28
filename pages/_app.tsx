@@ -6,9 +6,13 @@ import { ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client'
 import {createUploadLink} from "apollo-upload-client"
 import {API_URL} from "../constants/common"
 import type { AppProps } from 'next/app'
+import { getJwt } from '../api/utils'
 
 const link = createUploadLink({
-  uri: API_URL + '/graphql'
+  uri: API_URL + '/graphql',
+  headers: {
+   Authorization: typeof Window !== 'undefined' ? `Bearer ${getJwt()}` : ''
+  }
 })
 
 const client = new ApolloClient({
