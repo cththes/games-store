@@ -34,6 +34,7 @@ const Signup = () => {
 
    const onSubmit = (values) => {
       const {username, email, password} = values
+      console.log('values',values)
       signupGql({
          variables: {
             input: {

@@ -6,7 +6,7 @@ type PropsType = {
   onSubmit:Function
 }
 
-const RegistrationForm = ({onSubmit}):React.FC<PropsType> => {
+const RegistrationForm:React.FC<PropsType> = ({onSubmit}) => {
 
   const onFinish = (values) => {
     console.log('Success:', values);

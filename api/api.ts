@@ -1,6 +1,6 @@
 import Router from "next/router";
 import { deleteJwt } from "./utils";
-import auth from '../store/auth.js'
+import auth from '../store/auth'
 
 export const authAPI = {
    logout() {

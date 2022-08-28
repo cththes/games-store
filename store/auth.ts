@@ -1,24 +1,25 @@
-import { makeAutoObservable } from "mobx";
+import { observable, action } from 'mobx';
 import { getJwt } from "../api/utils";
-class auth {
-   isAuth = false
 
+export interface Auth{}
+class AuthStore implements Auth{
+   @observable isAuth = false;
    constructor() {
-      makeAutoObservable(this);
+      this.isAuth = false
       if (typeof window !== "undefined") {
          this.isAuth = !!getJwt()
       }
    }
-
-   login() {
+   
+   @action login = () => {
       this.isAuth = true
    }
-   logout() {
+   @action logout = () => {
       this.isAuth = false
    }
-   get isAuth() {
+   get isAuthorized() {
       return this.isAuth
    }
 }
 
-export default new auth();
+export default new AuthStore();
