@@ -1,13 +1,12 @@
 import { useEffect} from "react";
 import auth from "../store/auth";
-import { useQuery} from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import Router from "next/router";
 import {API_URL} from "../constants/common"
 import {getPictures} from '../graphql/queries/getPictures.query.graphql';
 
 const Pictures = () => {
   const { data, loading, error } = useQuery(getPictures)
-  console.log('getPictures',getPictures)
   const imgs = data ? data.myPictures.data : []
 
   useEffect(() => {
