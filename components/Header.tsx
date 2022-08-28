@@ -1,9 +1,11 @@
-import Logout from '../components/logout';
+
+import React from 'react'
+import Logout from './logout';
 import styles from "../styles/Header.module.scss";
 import auth from "../store/auth";
 import { LoginButton } from '../pages/login';
 import { SignupButton } from '../pages/signup';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import NoSSR from './NoSSR';
 
 
