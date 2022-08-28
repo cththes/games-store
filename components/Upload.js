@@ -1,29 +1,16 @@
 import React from 'react'
 import { useMutation, gql } from "@apollo/client";
 import {API_URL} from "../constants/common"
-
-const UPLOAD_IMG_MUTATION = gql`
-  mutation uploadFile($file: Upload!) {
-    upload(file: $file) {
-      data {
-        id
-        attributes {
-          name
-          url
-        }
-      }
-    }
-  }
-`;
+import {uploadFile} from '../graphql/mutations/uploadFile.mutation.graphql';
 
 const Upload = () => {
 
    const [uploadImg, { data: uploadData, loading, error}] =
-   useMutation(UPLOAD_IMG_MUTATION);
+   useMutation(uploadFile);
 
    const onUploadPhoto = (e) => {
      if (e.target.files.length) {
-       uploadImg({
+      uploadImg({
          variables: {
            file: e.target.files[0],
          },
