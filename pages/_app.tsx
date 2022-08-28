@@ -9,11 +9,11 @@ import type { AppProps } from 'next/app'
 import { getJwt } from '../api/utils'
 
 const link = createUploadLink({
-  uri: API_URL + '/graphql',
-  headers: {
-   Authorization: typeof Window !== 'undefined' ? `Bearer ${getJwt()}` : ''
-  }
-})
+   uri: API_URL + '/graphql',
+   headers: {
+    Authorization: typeof Window !== 'undefined' && getJwt() ? `Bearer ${getJwt()}` : ''
+   }
+ })
 
 const client = new ApolloClient({
   link,
