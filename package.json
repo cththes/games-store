@@ -8,7 +8,9 @@
     "test:cypress": "cypress open",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -p $PORT"
+    "start": "next start -p $PORT",
+    "generate-types": "yarn run apollo client:codegen --target typescript --endpoint=http://locahlostL3000/api/graphql --outputFlat includes '{pages}/*' --excludes 'generated' generated",
+    "download-schema": "yarn run apollo client:download-schema --endpoint=http://locahlostL3000/api/graphql output.gql"
   },
   "eslintConfig": {
     "extends": [
@@ -29,6 +31,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@apollo/client": "^3.6.9",
+    "@types/graphql": "^14.5.0",
     "antd": "^4.22.3",
     "apollo-client": "^2.6.10",
     "apollo-upload-client": "^17.0.0",
@@ -41,6 +44,7 @@
     "sass": "^1.54.3"
   },
   "devDependencies": {
+    "apollo": "^2.34.0",
     "cypress": "^10.3.1"
   }
 }

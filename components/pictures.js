@@ -3,6 +3,7 @@ import auth from "../store/auth";
 import { useQuery, gql } from "@apollo/client";
 import Router from "next/router";
 import {API_URL} from "../constants/common"
+import {GetImgQuery} from "/generated/GetImgQuery"
 
 const GET_IMG_QUERY = gql`
   query getPictures {
@@ -28,7 +29,7 @@ const GET_IMG_QUERY = gql`
 
 
 const Pictures = () => {
-  const { data, loading, error } = useQuery(GET_IMG_QUERY)
+  const { data, loading, error } = useQuery<GetImgQuery>(GET_IMG_QUERY)
   const imgs = data ? data.myPictures.data : []
 
   useEffect(() => {
