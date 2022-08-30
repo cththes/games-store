@@ -21,7 +21,7 @@ const Upload = () => {
   return (
     <div>
        <label>
-        <input type={"file"} text="Загрузить" onChange={onUploadPhoto} />
+        <input type="file" placeholder="Загрузить" onChange={onUploadPhoto} />
       </label>
       {loading ? <div>
         Uploading...
