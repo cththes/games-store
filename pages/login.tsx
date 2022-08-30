@@ -4,19 +4,20 @@ import Router from "next/router";
 import { Button } from 'antd';
 import { useMutation, gql } from '@apollo/client';
 import {saveJwt} from "../api/utils";
-import {login} from '../graphql/mutations/login.mutation.graphql';
+import LOGIN from '../graphql/mutations/login.mutation.graphql';
 
-export const LoginButton = () => {
+export const LoginButton:React.FC = () => {
    const onLoginButtonClick = () => {
       Router.push("/login")
    }
    return (
-      <Button type="primary" onClick={onLoginButtonClick}>Войти</Button>
+      <Button type="primary"></Button>
+      //<Button type="primary" onClick={onLoginButtonClick}>Войти</Button>
    )
 }
 
 const Login = () => {
-   const [loginGql, { data, loading, error }] = useMutation(login);
+   const [loginGql, { data, loading, error }] = useMutation(LOGIN);
 
    const onSubmit = (values) => {
       const { email, password } = values
