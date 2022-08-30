@@ -19,6 +19,8 @@ const Pictures = () => {
   if (!auth.isAuth) return null;
   return (
     <div>
+      {loading && "loading"}
+      {error && error.message}
       <div>
         {imgs.map((image) => (
           <div key={image.id}>
