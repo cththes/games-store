@@ -11,8 +11,7 @@ export const LoginButton:React.FC = () => {
       Router.push("/login")
    }
    return (
-      <Button type="primary"></Button>
-      //<Button type="primary" onClick={onLoginButtonClick}>Войти</Button>
+      <Button type="primary" onClick={onLoginButtonClick}>Войти</Button>
    )
 }
 
