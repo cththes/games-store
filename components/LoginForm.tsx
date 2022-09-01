@@ -40,7 +40,7 @@ const LoginForm = ({onSubmit}) => {
           },
         ]}
       >
-        <Input />
+        <Input id="LoginEmailInput"/>
       </Form.Item>
 
       <Form.Item
@@ -54,7 +54,7 @@ const LoginForm = ({onSubmit}) => {
           },
         ]}
       >
-        <Input.Password />
+        <Input.Password id="LoginPasswordInput"/>
       </Form.Item>
 
       <Form.Item
