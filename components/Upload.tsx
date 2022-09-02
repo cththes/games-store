@@ -1,12 +1,12 @@
 import React from 'react'
 import { useMutation, gql } from "@apollo/client";
 import {API_URL} from "../constants/common"
-import UPLOAD_FILE from '../graphql/mutations/uploadFile.mutation.graphql';
+import { UploadFileDocument, UploadFileMutation, UploadFileMutationVariables } from '../graphql/generated';
 
 const Upload = () => {
 
    const [uploadImg, { data: uploadData, loading, error}] =
-   useMutation(UPLOAD_FILE);
+   useMutation<UploadFileMutation, UploadFileMutationVariables>(UploadFileDocument);
 
    const onUploadPhoto = (e) => {
      if (e.target.files.length) {
