@@ -1,5 +1,5 @@
 import RegistrationForm from '../components/RegistrationForm';
-import auth from "../store/auth";
+import auth from '../store/auth';
 import Router from "next/router";
 import { Button } from 'antd';
 import { useMutation, gql } from '@apollo/client';
