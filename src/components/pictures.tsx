@@ -2,7 +2,7 @@ import { useEffect} from "react";
 import auth from "../store/auth";
 import { useQuery } from "@apollo/client";
 import Router from "next/router";
-import {API_URL} from "../constants/common"
+import { API_URL } from "../constants/common";
 import { GetPicturesDocument, GetPicturesQuery, GetPicturesQueryVariables } from "../graphql/generated";
 
 const Pictures = () => {

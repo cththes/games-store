@@ -4,7 +4,7 @@ import 'antd/dist/antd.css'
 import Header from '../components/Header'
 import { ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client'
 import {createUploadLink} from "apollo-upload-client"
-import {API_URL} from "../constants/common"
+import { API_URL } from '../constants/common'
 import type { AppProps } from 'next/app'
 import { getJwt } from '../api/utils'
 
