@@ -1,5 +1,5 @@
 import React from 'react'
-import { useMutation, gql } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import {API_URL} from "../constants/common"
 import { UploadFileDocument, UploadFileMutation, UploadFileMutationVariables } from '../graphql/generated';
 
