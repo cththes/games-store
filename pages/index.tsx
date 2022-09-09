@@ -1,6 +1,7 @@
 import Pictures from "../components/pictures";
 import NoSSR from "../components/NoSSR"
 import Upload from "../components/Upload";
+import Videogames from "../components/videogames";
 
 const index = () => {
 
@@ -12,6 +13,7 @@ const index = () => {
          <NoSSR>
             <Upload />
             <Pictures />
+            <Videogames />
          </NoSSR>  
       </div>
    )
