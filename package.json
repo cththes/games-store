@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "test:cypress": "start-server-and-test start http:/localhost:8080 cypress",
-    "cypress":"cypress open",
+    "cypress": "cypress open",
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p $PORT",
@@ -50,7 +48,6 @@
     "@graphql-codegen/typescript-operations": "^2.5.3",
     "@types/node": "^18.7.11",
     "@types/react": "^18.0.17",
-    "cypress": "^10.3.1",
-    "start-server-and-test": "^1.14.0"
+    "cypress": "^10.3.1"
   }
 }
