@@ -3,10 +3,10 @@ import auth from "../store/auth";
 import { useQuery } from "@apollo/client";
 import Router from "next/router";
 import {API_URL} from "../constants/common"
-import GET_PICTURES from '../graphql/queries/getPictures.query.graphql';
+import { GetPicturesDocument, GetPicturesQuery, GetPicturesQueryVariables } from "../graphql/generated";
 
 const Pictures = () => {
-  const { data, loading, error } = useQuery(GET_PICTURES)
+  const { data, loading, error } = useQuery<GetPicturesQuery, GetPicturesQueryVariables>(GetPicturesDocument)
   const imgs = data ? data.myPictures.data : []
 
   useEffect(() => {
@@ -19,6 +19,8 @@ const Pictures = () => {
   if (!auth.isAuth) return null;
   return (
     <div>
+      {loading && "loading"}
+      {error && error.message}
       <div>
         {imgs.map((image) => (
           <div key={image.id}>

@@ -4,7 +4,7 @@ import Router from "next/router";
 import { Button } from 'antd';
 import { useMutation, gql } from '@apollo/client';
 import {saveJwt} from "../api/utils";
-import LOGIN from '../graphql/mutations/login.mutation.graphql';
+import { LoginDocument, LoginMutation, LoginMutationVariables } from '../graphql/generated';
 
 export const LoginButton:React.FC = () => {
    const onLoginButtonClick = () => {
@@ -16,7 +16,7 @@ export const LoginButton:React.FC = () => {
 }
 
 const Login = () => {
-   const [loginGql, { data, loading, error }] = useMutation(LOGIN);
+   const [loginGql, { data, loading, error }] = useMutation<LoginMutation, LoginMutationVariables>( LoginDocument);
 
    const onSubmit = (values) => {
       const { email, password } = values

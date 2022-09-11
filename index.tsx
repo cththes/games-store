@@ -1,10 +1,8 @@
-import Main from "./main"
-
 const index = () => {
 
    return (
       <div>
-         <Main />
+         Главная страница
       </div>
    )
 }
