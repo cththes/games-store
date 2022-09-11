@@ -1,17 +1,16 @@
 describe("Login test", () => {
-   it("should visit localhost", () => {
+   beforeEach(() => {
       cy.visit("localhost:3000", {timeout: 10000});
-      }
-   )
-   it("should login button work", () => {
       cy.get("button").should("contain.text", "Войти").click();
+      cy.location().should((loc) => {
+         expect(loc.pathname).to.eq('/login')
+      })
+   })
 
-      }
-   )
    it("should Email input work", () => {
       cy.get("[id='LoginEmailInput']")
-      .type('fdfjsdfldsfhl')
-      .should('have.value','fdfjsdfldsfhl');
+      .type('cththes@gmail.com')
+      .should('have.value','cththes@gmail.com');
       }
    )
    it("should Password input work", () => {
@@ -20,14 +19,32 @@ describe("Login test", () => {
       }
    )
    it("should Submit button work", () => {
+      cy.get("[id='LoginEmailInput']")
+      .type('cththes@gmail.com')
+      cy.get("[id='LoginPasswordInput']")
+      .type('Test12345')
       cy.contains('Submit').click();
+      cy.wait(2000)
       cy.url().should('eq', 'http://localhost:3000/');
    }
    )
    it("should main page work correct", () => {
+      cy.get("[id='LoginEmailInput']")
+      .type('cththes@gmail.com')
+      cy.get("[id='LoginPasswordInput']")
+      .type('Test12345')
+      cy.contains('Submit').click();
       cy.contains("Выйти").should("exist");
       cy.contains("Главная страница").should("exist");
       cy.get('input[type="file"]').should("exist");
       }
    )
 })
+
+
+/*
+it.only("should login button work", () => {
+      cy.get("button").should("contain.text", "Войти").click();
+      }
+   )
+   */
