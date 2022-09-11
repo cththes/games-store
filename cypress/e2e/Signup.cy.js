@@ -30,6 +30,7 @@ describe("Signup test", () => {
    )
    it("creating exist user causes an error", () => {
       cy.contains('Submit').click();
+      cy.get('#errorMessage').should('exist').should('have.text','Email or Username are already taken')
       }
    )
 })
