@@ -2,7 +2,6 @@ import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { GetProductDocument, GetProductQuery, GetProductQueryVariables } from "../../graphql/generated";
 import { API_URL } from "../../constants/common";
-
 export default function Videogame() {
   const { query } = useRouter();
   const { data, loading, error } = useQuery<GetProductQuery, GetProductQueryVariables>(GetProductDocument, {
@@ -23,6 +22,9 @@ export default function Videogame() {
         <div>{videogame.Description}</div>
         <div>{videogame.Date}</div>
         <img alt={videogame.Name} src={API_URL + videogame?.LargeImg?.data?.[0]?.attributes?.url} /></div> : null}
+      {videogame.Screenshots.data.map(screenshot => <div>
+        <img alt={screenshot.attributes.name} src={API_URL + screenshot.attributes.url} />
+      </div>)}
     </div>
   );
 }

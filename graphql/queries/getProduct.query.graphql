@@ -17,6 +17,15 @@ query getProduct($id: ID) {
             }
           }
         }
+        Screenshots {
+          data {
+            id
+            attributes{
+              name
+              url
+            }
+          }
+        }
       }
     }
   }
