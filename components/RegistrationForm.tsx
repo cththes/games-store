@@ -45,7 +45,7 @@ const RegistrationForm:React.FC<PropsType> = ({onSubmit}) => {
           },
         ]}
       >
-        <Input />
+        <Input id="SignupUsernameInput"/>
       </Form.Item>
 
       <Form.Item
@@ -58,7 +58,7 @@ const RegistrationForm:React.FC<PropsType> = ({onSubmit}) => {
           },
         ]}
       >
-        <Input />
+        <Input id="SignupEmailInput"/>
       </Form.Item>
 
       <Form.Item
@@ -72,7 +72,7 @@ const RegistrationForm:React.FC<PropsType> = ({onSubmit}) => {
           },
         ]}
       >
-        <Input.Password />
+        <Input.Password id="SignupPasswordInput"/>
       </Form.Item>
 
       <Form.Item
