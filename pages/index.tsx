@@ -11,8 +11,6 @@ const index = () => {
             Главная страница
          </h1>
          <NoSSR>
-            <Upload />
-            <Pictures />
             <Videogames />
          </NoSSR>  
       </div>
