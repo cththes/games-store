@@ -4,6 +4,7 @@ import { GetProductDocument, GetProductQuery, GetProductQueryVariables } from ".
 import { API_URL } from "../../constants/common";
 import { Button } from "antd";
 import styles from "../../styles/videogame.module.css"
+import ImageSlider from "../../components/ImageSlider";
 
 export default function Videogame() {
   const { query } = useRouter();
@@ -13,7 +14,6 @@ export default function Videogame() {
     }
   })
   const videogame = data?.product?.data?.attributes ?? null
-  console.log('videogame', videogame)
   return (
     <div className={styles.product}>
       {loading && "loading"}
@@ -21,18 +21,17 @@ export default function Videogame() {
       <Button onClick={() => Router.push('/')}>На главную</Button>
       {videogame ? <div>
         <h1>{videogame.Name}</h1>
-        <div>
+        <div className={styles.rightSideBar}>
           <img alt={videogame.Name} src={API_URL + videogame?.LargeImg?.data?.[0]?.attributes?.url} className={styles.artwork} />
+          <div className={styles.description}>{videogame.Description}</div>
         </div>
         <div className={styles.screenshots}>
-          {videogame.Screenshots?.data?.map(screenshot => <div>
-            <img alt={screenshot.attributes.name} src={API_URL + screenshot?.attributes?.url} className={styles.screenshot} />
-          </div>)}
+          <div className={styles.slider}><ImageSlider slides={videogame.Screenshots.data}/></div>
         </div>
-        <div className={styles.description}>{videogame.Description}</div>
-        <div>{videogame.Price + videogame.Currency}</div>
-        <div>{videogame.Date}</div>
-      </div> : null}
+        
+        {/* <div>{videogame.Price + videogame.Currency}</div>
+        <div>{videogame.Date}</div> */}
+      </div> : null}    
     </div>
   );
 }

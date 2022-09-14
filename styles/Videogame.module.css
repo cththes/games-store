@@ -1,7 +1,7 @@
-.product{
-   
-}
 
+.rightSideBar{
+   float:right;
+}
 .artwork{
    width:600px;
 }
@@ -19,4 +19,10 @@
 .screenshot{
    width:200px;
    margin: 4px;
+}
+
+.slider {
+   width:500px;
+   height:280px;
+   margin:"0 auto";
 }
