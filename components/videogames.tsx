@@ -18,7 +18,6 @@ const Videogames = () => {
       }
    })
    const videogames = data ? data.products.data : []
-   console.log('videogames', videogames)
 
    useEffect(() => {
       const { pathname } = Router;

@@ -10,7 +10,8 @@ export default function Videogame() {
   const { query } = useRouter();
   const { data, loading, error } = useQuery<GetProductQuery, GetProductQueryVariables>(GetProductDocument, {
     variables: {
-      id: query.id as string
+      id: query.id as string,
+      screenshotsPagination: { "pageSize": 25 }
     }
   })
   const videogame = data?.product?.data?.attributes ?? null
@@ -26,12 +27,12 @@ export default function Videogame() {
           <div className={styles.description}>{videogame.Description}</div>
         </div>
         <div className={styles.screenshots}>
-          <div className={styles.slider}><ImageSlider slides={videogame.Screenshots.data}/></div>
+          <div className={styles.slider}><ImageSlider slides={videogame.Screenshots.data} /></div>
         </div>
-        
+
         {/* <div>{videogame.Price + videogame.Currency}</div>
         <div>{videogame.Date}</div> */}
-      </div> : null}    
+      </div> : null}
     </div>
   );
 }

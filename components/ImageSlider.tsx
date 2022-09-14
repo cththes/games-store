@@ -18,8 +18,6 @@ const ImageSlider = ({ slides }) => {
    const goToSlide = slideIndex => {
       setCurrentIndex(slideIndex)
    }
-   console.log('slides[currentIndex].attributes.url',slides[currentIndex].attributes.url)
-   console.log('currentIndex',currentIndex)
    return (
       <div className={styles.sliderStyles}>
          <div className={styles.leftArrowStyles} onClick={goToPrevious}></div>
