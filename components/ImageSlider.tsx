@@ -5,6 +5,10 @@ import styles from "../styles/ImageSlider.module.css"
 const ImageSlider = ({ slides }) => {
    const [currentIndex, setCurrentIndex] = useState(0)
 
+   const onThumbnailClick = () => {
+
+   }
+
    const goToPrevious = () => {
       const isFirstSlide = currentIndex === 0
       const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1
@@ -28,8 +32,8 @@ const ImageSlider = ({ slides }) => {
                <div key={slideIndex}
                   className={styles.dotStyles}
                   onClick={() => goToSlide(slideIndex)}>
-                     <img className={styles.thumbnail} src={API_URL + slides[slideIndex]?.attributes?.url}/>
-                  </div>
+                  <img className={styles.thumbnail} onClick={onThumbnailClick} src={API_URL + slides[slideIndex]?.attributes?.url} />
+               </div>
             ))}
          </div>
       </div>

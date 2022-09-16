@@ -50,3 +50,13 @@
    height:65px;
    margin:2px;
 }
+
+.thumbnail:hover {
+   border: solid;
+   border-radius: 3px;
+}
+
+.thumbnail:active {
+   border: solid;
+   border-radius: 3px;
+}
