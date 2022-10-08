@@ -25,7 +25,6 @@ export default function Videogame() {
   const onBuyButtonClick = (videogame) => {
     setCardActive(true)
     CardStore.addProduct(videogame)
-    console.log('videogame',videogame)
   }
 
   return (

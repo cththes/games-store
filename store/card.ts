@@ -23,6 +23,7 @@ class CardStore implements Card {
          })
          this.totalPrice += videogame.Price
       }
+      this.item.isInCard = false
 
    }
    @action deleteProduct = (id: number) => {
