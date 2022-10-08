@@ -1,0 +1,23 @@
+.item {
+   background-color: #1a2b3d;
+   color:white;
+   padding:15px;
+}
+
+.Name {
+   margin-left:5px;
+   vertical-align: top;
+}
+
+.artwork {
+   width:150px;
+   height:56px;
+}
+
+.right{
+   float:right;
+}
+
+.deleteItem {
+   cursor: pointer
+}

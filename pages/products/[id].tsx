@@ -7,6 +7,7 @@ import styles from "../../styles/videogame.module.css"
 import ImageSlider from "../../components/ImageSlider";
 import { useState } from "react";
 import CardStore from "../../store/card"
+import Card from "../../components/Card";
 
 export default function Videogame() {
   const { query } = useRouter();
@@ -17,13 +18,14 @@ export default function Videogame() {
     }
   })
 
-  const [isCardActive, setCardActive] = useState(false)
+  const [isCardActive, setCardActive] = useState(true)
 
   const videogame = data?.product?.data?.attributes ?? null
 
-  const onBuyButtonClick = (price: number) => {
+  const onBuyButtonClick = (videogame) => {
     setCardActive(true)
-    CardStore.addProduct(price)
+    CardStore.addProduct(videogame)
+    console.log('videogame',videogame)
   }
 
   return (
@@ -46,17 +48,11 @@ export default function Videogame() {
             <span className={styles.price}>
               {videogame.Price + ' ' + videogame.Currency + ' '}
             </span>
-            <Button onClick={() => { onBuyButtonClick(videogame.Price) }}>В корзину</Button>
+            <Button onClick={() => { onBuyButtonClick(videogame) }}>В корзину</Button>
           </div>
 
           <div className={styles.card}>
-            {isCardActive && <div>Корзина</div>}
-            <div>
-              {videogame.Name}
-              <div className={styles.totalPrice}>
-                {CardStore.totalPrice}
-              </div>
-            </div>
+            {isCardActive && <Card />}
           </div>
 
         </div>

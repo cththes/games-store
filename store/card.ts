@@ -1,19 +1,35 @@
 import { observable, action } from 'mobx';
-export interface Card{}
+import { VideogameType } from '../types/types';
+export interface Card { }
 
-class CardStore implements Card{
-   @observable card = [];
+class CardStore implements Card {
+   @observable CardItems = [];
    @observable item = {
-      id:0,
-      title:"",
-      imageUr:"",
-      price:"",
+      Name: "",
+      Image: "",
+      Price: "",
+      isInCard: false,
    }
    @observable totalPrice = 0
 
-   @action addProduct = (price:number) => {
-      this.card.push(price)
-      this.totalPrice += price
+   @action addProduct = (videogame: VideogameType) => {
+      this.CardItems.forEach(item => {
+        if (item.videogame.Name === videogame.Name) this.item.isInCard = true
+      }
+      )
+      if (!this.item.isInCard) {
+         this.CardItems.push({
+            videogame
+         })
+         this.totalPrice += videogame.Price
+      }
+
+   }
+   @action deleteProduct = (id: number) => {
+      this.CardItems.splice(id, 1)
+   }
+   get total() {
+      return this.CardItems
    }
 }
 
