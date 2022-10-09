@@ -1,16 +1,16 @@
 import styles from "../styles/Card.module.css"
-import total from "../store/card"
+import total from "../store/cart"
 import { API_URL } from "../constants/common"
-import CardStore from "../store/card"
-const Card = () => {
+import CartStore from "../store/cart"
+const Cart = () => {
   
    const onDeleteClick = (id:number) => {
-      CardStore.deleteProduct(id)
+      CartStore.deleteProduct(id)
     }
    return (
       <div>
          <h3>Корзина</h3>
-         <div className={styles.total}>{total.CardItems.map(item => <div className={styles.item}>
+         <div className={styles.total}>{total.CartItems.map(item => <div className={styles.item}>
             <img
                alt={item.videogame.Name}
                src={API_URL + item.videogame?.LargeImg?.data?.[0]?.attributes?.url}
@@ -19,11 +19,10 @@ const Card = () => {
             <span className={styles.Name}>{item.videogame.Name}</span>
             <div className={styles.right}>
                <span className={styles.Price}>{item.videogame.Price + item.videogame.Currency}</span>
-               <div className={styles.deleteItem} onClick={()=>{onDeleteClick(total.CardItems.indexOf(item))}}>Удалить</div>
+               <div className={styles.deleteItem} onClick={()=>{onDeleteClick(total.CartItems.indexOf(item))}}>Удалить</div>
             </div>
          </div>)}</div>
       </div>
    )
 }
-//total.CardItems[total.CardItems.indexOf(item)].videogame.Name
-export default Card
+export default Cart
